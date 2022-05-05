@@ -1,9 +1,11 @@
 const BrandRoute = require("express").Router();
 
-BrandRoute.get("/", (req, res) => {
-  res.json({
-    message: "Brand Route",
-  });
-});
+const BrandController = require("../controllers/BrandController");
+
+BrandRoute.get("/", BrandController.getBrands);
+BrandRoute.get("/:id", BrandController.getBrand);
+BrandRoute.post("/create", BrandController.createBrand);
+BrandRoute.get("/delete/:id", BrandController.deleteBrand);
+BrandRoute.post("/update/:id", BrandController.updateBrand);
 
 module.exports = BrandRoute;
