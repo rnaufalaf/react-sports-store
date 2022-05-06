@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
+div.header-container {
+  background-color: lightgrey;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+h2.header {
+  font-family: "Koulen", cursive;
+}
+
+div.card {
+  width: 18rem;
+}
