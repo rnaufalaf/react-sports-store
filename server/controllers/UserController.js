@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Item } = require("../models");
 
 class UserController {
   static async getUsers(req, res) {
@@ -86,6 +86,11 @@ class UserController {
         await User.destroy({
           where: {
             id: id,
+          },
+        });
+        await Item.destroy({
+          where: {
+            UserId: id,
           },
         });
         res.json({

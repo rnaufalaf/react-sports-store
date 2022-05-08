@@ -20,6 +20,9 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      price: {
+        type: Sequelize.STRING
+      },
       BrandId: {
         type: Sequelize.INTEGER
       },

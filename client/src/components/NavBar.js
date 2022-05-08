@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchChanged = (e) => {
+    setSearchQuery(e.target.value);
+  };
+  const navigate = useNavigate();
+
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -37,9 +44,14 @@ const NavBar = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onChange={searchChanged}
             />
-            <button class="btn btn-outline-success" type="submit">
-              Search
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={() => navigate(`/searchQuery/${searchQuery}`)}
+            >
+              Submit
             </button>
           </form>
         </div>

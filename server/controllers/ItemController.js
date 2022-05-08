@@ -1,12 +1,35 @@
-const { Item } = require("../models");
+const { Item, Brand, User } = require("../models");
 
 class ItemController {
   static async getItems(req, res) {
     try {
-      let items = await Item.findAll();
+      let items = await Item.findAll({
+        include: [Brand, User],
+      });
+
+      let summary = {};
+      let itemObj = [];
+      let brandObj = [];
+      let userObj = [];
+
+      let summaryArr = [];
+
+      items.map((item) => {
+        itemObj = item.dataValues;
+        brandObj = item.dataValues.Brand;
+        userObj = item.dataValues.User;
+
+        summary = {
+          itemObj,
+          brandObj,
+          userObj,
+        };
+
+        summaryArr.push(summary);
+      });
 
       if (items !== null) {
-        res.json(items);
+        res.json(summaryArr);
       } else {
         res.json({
           message: "Items are empty",
@@ -44,10 +67,18 @@ class ItemController {
   }
 
   static async createItem(req, res) {
-    const { name, type, img, description, BrandId, UserId } = req.body;
+    const { name, type, img, price, description, BrandId, UserId } = req.body;
 
     try {
-      await Item.create({ name, type, img, description, BrandId, UserId });
+      await Item.create({
+        name,
+        type,
+        img,
+        price,
+        description,
+        BrandId,
+        UserId,
+      });
       res.json({
         message: `Item ${name} has been added`,
       });
@@ -93,7 +124,7 @@ class ItemController {
   }
 
   static async updateItem(req, res) {
-    const { name, type, img, description, BrandId, UserId } = req.body;
+    const { name, type, img, price, description, BrandId, UserId } = req.body;
     const id = Number(req.params.id);
 
     try {
@@ -105,7 +136,7 @@ class ItemController {
 
       if (ItemName !== null) {
         await Item.update(
-          { name, type, img, description, BrandId, UserId },
+          { name, type, img, price, description, BrandId, UserId },
           {
             where: {
               id: id,

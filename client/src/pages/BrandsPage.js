@@ -1,40 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getBrands } from "../fetchs/brandFetch";
 
 import BrandCard from "../components/BrandCard";
 
 const BrandsPage = () => {
   const navigate = useNavigate();
-  const dummyObj = [
-    {
-      id: 1,
-      brandName: "Converse",
-      brandIcon:
-        "https://thumbs.dreamstime.com/z/vector-logos-collection-most-famous-fashion-brands-world-format-available-illustrator-ai-converse-chuck-taylor-all-star-131102324.jpg",
-    },
-    {
-      id: 2,
-      brandName: "Vans",
-      brandIcon:
-        "https://thumbs.dreamstime.com/z/vector-logos-collection-most-famous-fashion-brands-world-format-available-illustrator-ai-converse-chuck-taylor-all-star-131102324.jpg",
-    },
-    {
-      id: 3,
-      brandName: "Reebok",
-      brandIcon:
-        "https://thumbs.dreamstime.com/z/vector-logos-collection-most-famous-fashion-brands-world-format-available-illustrator-ai-converse-chuck-taylor-all-star-131102324.jpg",
-    },
-    {
-      id: 4,
-      brandName: "Skechers",
-      brandIcon:
-        "https://thumbs.dreamstime.com/z/vector-logos-collection-most-famous-fashion-brands-world-format-available-illustrator-ai-converse-chuck-taylor-all-star-131102324.jpg",
-    },
-  ];
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+    const fetchBrands = () => {
+      getBrands((brands) => {
+        setBrands(brands);
+      });
+      setIsLoading(false);
+    };
+    fetchBrands();
+  }, [setBrands, setIsLoading]);
+
   return (
     <div className="container px-4 py-4">
       <div className="row">
-        {dummyObj.map((obj) => {
+        {brands.map((obj) => {
           return (
             <div className="col-sm-4">
               <BrandCard data={obj} />

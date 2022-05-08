@@ -1,22 +1,52 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import { deleteUser } from "../fetchs/userFetch";
 
 const UserCard = (props) => {
-  const { username, phone, address, photo } = props.data;
+  const navigate = useNavigate();
+
+  const deleteUserHandler = (id) => {
+    deleteUser(id);
+    Swal.fire("User successfully deleted");
+    navigate("/users");
+  };
+
+  const { id, username, phone, address, photo } = props.data;
+  console.log(photo);
   return (
     <div class="card">
-      <img class="card-img-top" src={photo} alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src={require(`../images/${photo}`)}
+        alt="Card image cap"
+      />
       <div class="card-body">
         <h5 class="card-title">{username}</h5>
         <h6 class="card-subtitle">{phone}</h6>
         <p class="card-text">{address}</p>
-        <div class="row">
-          <div class="col">
-            <a class="btn btn-primary" href="/users/edit">
+        <div class="dropdown" align="center">
+          <button
+            class="btn btn-secondary dropdown-toggle bg-primary"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a
+              class="dropdown-item"
+              onClick={() => navigate(`/users/edit/${id}`)}
+            >
               Edit
             </a>
-          </div>
-          <div class="col">
-            <a class="btn btn-danger">Delete</a>
+            <a class="dropdown-item" onClick={() => deleteUserHandler(id)}>
+              Delete
+            </a>
           </div>
         </div>
       </div>

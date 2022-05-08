@@ -14,9 +14,7 @@ function App() {
         </h2>
       </div>
       <NavBar />
-      <body className="body">
-        <MainContent />
-      </body>
+      <MainContent />
     </div>
   );
 }

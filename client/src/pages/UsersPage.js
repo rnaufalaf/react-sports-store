@@ -1,37 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import UserCard from "../components/UserCard";
+import { getUsers } from "../fetchs/userFetch";
 
 const UsersPage = () => {
   const navigate = useNavigate();
-  const dummyObj = [
-    {
-      id: 1,
-      username: "John",
-      phone: "12345",
-      address: "London",
-      photo: "https://www.w3schools.com/howto/img_avatar.png",
-    },
-    {
-      id: 2,
-      username: "John",
-      phone: "12345",
-      address: "London",
-      photo: "https://www.w3schools.com/howto/img_avatar.png",
-    },
-    {
-      id: 3,
-      username: "John",
-      phone: "12345",
-      address: "London",
-      photo: "https://www.w3schools.com/howto/img_avatar.png",
-    },
-  ];
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = () => {
+      getUsers((users) => {
+        setUsers(users);
+      });
+      setIsLoading(false);
+    };
+    fetchUsers();
+  }, [setUsers, setIsLoading]);
+
   return (
     <div className="container px-4 py-4">
       <div className="row">
-        {dummyObj.map((obj) => {
+        {users.map((obj) => {
           return (
             <div className="col-sm-4">
               <UserCard data={obj} />

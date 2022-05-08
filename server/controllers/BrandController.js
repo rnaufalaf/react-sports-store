@@ -1,4 +1,4 @@
-const { Brand } = require("../models");
+const { Brand, Item } = require("../models");
 
 class BrandController {
   static async getBrands(req, res) {
@@ -44,8 +44,7 @@ class BrandController {
   }
 
   static async createBrand(req, res) {
-    const { name, logo } = req.body;
-
+    const { name, description, logo } = req.body;
     try {
       let brandName = await Brand.findOne({
         where: {
@@ -58,7 +57,7 @@ class BrandController {
           message: `Brand ${name} already exists`,
         });
       } else {
-        await Brand.create({ name, logo });
+        await Brand.create({ name, description, logo });
         res.json({
           message: `Brand ${name} has been added`,
         });
@@ -83,6 +82,11 @@ class BrandController {
       });
 
       if (brandName !== null) {
+        await Item.destroy({
+          where: {
+            BrandId: id,
+          },
+        });
         await Brand.destroy({
           where: {
             id: id,
@@ -105,7 +109,7 @@ class BrandController {
   }
 
   static async updateBrand(req, res) {
-    const { name, logo } = req.body;
+    const { name, description, logo } = req.body;
     const id = Number(req.params.id);
 
     try {
@@ -117,7 +121,7 @@ class BrandController {
 
       if (brandName !== null) {
         await Brand.update(
-          { name, logo },
+          { name, description, logo },
           {
             where: {
               id: id,
