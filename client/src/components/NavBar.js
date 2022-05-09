@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,10 +10,14 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          Dashboard
+        <a
+          class="navbar-brand"
+          href="/"
+          style={{ color: "gold", fontWeight: "bold" }}
+        >
+          Items
         </a>
         <button
           class="navbar-toggler"
@@ -28,12 +33,20 @@ const NavBar = () => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/users">
+              <a
+                class="nav-link"
+                href="/users"
+                style={{ color: "gold", fontWeight: "bold" }}
+              >
                 Users
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/brands">
+              <a
+                class="nav-link"
+                href="/brands"
+                style={{ color: "gold", fontWeight: "bold" }}
+              >
                 Brands
               </a>
             </li>
@@ -49,6 +62,12 @@ const NavBar = () => {
             <button
               type="button"
               class="btn btn-primary"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "gold",
+                color: "black",
+                border: 0,
+              }}
               onClick={() => navigate(`/searchQuery/${searchQuery}`)}
             >
               Submit

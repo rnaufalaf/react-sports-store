@@ -99,6 +99,12 @@ const AddUserPage = () => {
             type="button"
             class="btn btn-primary my-5"
             form="data"
+            style={{
+              backgroundColor: "gold",
+              color: "black",
+              fontWeight: "bold",
+              border: 0,
+            }}
             onClick={() => submitDataHandler()}
           >
             Submit

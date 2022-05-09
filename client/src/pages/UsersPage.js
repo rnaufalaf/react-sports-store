@@ -22,6 +22,9 @@ const UsersPage = () => {
 
   return (
     <div className="container px-4 py-4">
+      <h3 align="center" class="py-4" style={{ fontWeight: "bold" }}>
+        List of Users
+      </h3>
       <div className="row">
         {users.map((obj) => {
           return (
@@ -34,7 +37,13 @@ const UsersPage = () => {
       <div align="right" class="py-3">
         <button
           class="btn btn-md btn-primary"
-          style={{ borderRadius: "50px" }}
+          style={{
+            backgroundColor: "gold",
+            color: "black",
+            fontWeight: "bold",
+            border: 0,
+            borderRadius: "50px",
+          }}
           onClick={() => navigate("/users/add")}
         >
           + Add User

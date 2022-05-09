@@ -15,7 +15,7 @@ const ItemCard = (props) => {
   };
 
   return (
-    <div class="card my-2">
+    <div class="card my-2 mx-1 shadow">
       <div class="row">
         <div class="col">
           <img
@@ -67,8 +67,8 @@ const ItemCard = (props) => {
             <h5 class="card-title">{itemObj.name}</h5>
           </div>
           <div class="col">
-            <h5 class="card-title" style={{ color: "green" }}>
-              {itemObj.price}
+            <h5 class="card-title" style={{ color: "gold" }}>
+              {"$" + itemObj.price}
             </h5>
           </div>
         </div>
@@ -77,12 +77,13 @@ const ItemCard = (props) => {
 
         <div class="dropdown" align="center">
           <button
-            class="btn btn-secondary dropdown-toggle bg-primary"
+            class="btn btn-secondary dropdown-toggle bg-warning"
             type="button"
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            style={{ color: "black", fontWeight: "bold", border: 0 }}
           >
             Actions
           </button>

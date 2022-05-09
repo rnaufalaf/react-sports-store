@@ -16,7 +16,7 @@ const UserCard = (props) => {
   const { id, username, phone, address, photo } = props.data;
   console.log(photo);
   return (
-    <div class="card">
+    <div class="card mx-1 my-2 shadow">
       <img
         class="card-img-top"
         src={require(`../images/${photo}`)}
@@ -28,12 +28,17 @@ const UserCard = (props) => {
         <p class="card-text">{address}</p>
         <div class="dropdown" align="center">
           <button
-            class="btn btn-secondary dropdown-toggle bg-primary"
+            class="btn btn-secondary dropdown-toggle bg-warning"
             type="button"
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            style={{
+              color: "black",
+              fontWeight: "bold",
+              border: 0,
+            }}
           >
             Actions
           </button>

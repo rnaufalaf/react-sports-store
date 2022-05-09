@@ -156,6 +156,12 @@ const AddItemPage = () => {
           <button
             type="button"
             class="btn btn-primary my-5"
+            style={{
+              color: "black",
+              backgroundColor: "gold",
+              border: 0,
+              fontWeight: "bold",
+            }}
             onClick={() => submitDataHandler()}
           >
             Submit

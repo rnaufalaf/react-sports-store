@@ -8,13 +8,17 @@ import { NavBar, MainContent } from "./components";
 function App() {
   return (
     <div className="container">
-      <div className="header-container">
-        <h2 align="center" className="header">
+      <div className="header-container bg-dark">
+        <h2 align="center" className="header" style={{ color: "gold" }}>
           Sports Store App
         </h2>
       </div>
-      <NavBar />
-      <MainContent />
+      <div>
+        <NavBar />
+      </div>
+      <div>
+        <MainContent />
+      </div>
     </div>
   );
 }

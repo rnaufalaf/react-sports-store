@@ -22,6 +22,9 @@ const HomePage = () => {
 
   return (
     <div className="container my-4 mx-4">
+      <h3 align="center" class="py-4" style={{ fontWeight: "bold" }}>
+        List of Items
+      </h3>
       <div className="row">
         {items.map((item) => {
           return <ItemCard data={item}></ItemCard>;
@@ -30,7 +33,13 @@ const HomePage = () => {
       <div className="py-3" align="right">
         <button
           class="btn btn-md btn-primary"
-          style={{ borderRadius: "50px" }}
+          style={{
+            borderRadius: "50px",
+            fontWeight: "bold",
+            backgroundColor: "gold",
+            color: "black",
+            border: 0,
+          }}
           onClick={() => navigate("/items/add")}
         >
           + Add Item

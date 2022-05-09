@@ -15,7 +15,7 @@ const BrandCard = (props) => {
   };
 
   return (
-    <div class="card">
+    <div class="card shadow mx-2 my-1">
       <img
         class="card-img-top"
         src={require(`../images/${logo}`)}
@@ -27,12 +27,17 @@ const BrandCard = (props) => {
         <p class="card-text">{description}</p>
         <div class="dropdown" align="center">
           <button
-            class="btn btn-secondary dropdown-toggle bg-primary"
+            class="btn btn-secondary dropdown-toggle bg-warning"
             type="button"
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            style={{
+              color: "black",
+              fontWeight: "bold",
+              border: 0,
+            }}
           >
             Actions
           </button>

@@ -22,6 +22,9 @@ const BrandsPage = () => {
 
   return (
     <div className="container px-4 py-4">
+      <h3 align="center" class="py-4" style={{ fontWeight: "bold" }}>
+        List of Brands
+      </h3>
       <div className="row">
         {brands.map((obj) => {
           return (
@@ -34,7 +37,13 @@ const BrandsPage = () => {
       <div align="right" class="py-3">
         <button
           class="btn btn-md btn-primary"
-          style={{ borderRadius: "50px" }}
+          style={{
+            borderRadius: "50px",
+            backgroundColor: "gold",
+            color: "black",
+            border: 0,
+            fontWeight: "bold",
+          }}
           onClick={() => navigate("/brands/add")}
         >
           + Add Brand

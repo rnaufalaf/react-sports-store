@@ -87,6 +87,12 @@ const AddBrandPage = () => {
           <button
             type="button"
             class="btn btn-primary my-5"
+            style={{
+              backgroundColor: "gold",
+              color: "black",
+              fontWeight: "bold",
+              border: 0,
+            }}
             onClick={() => submitDataHandler()}
           >
             Submit

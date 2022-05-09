@@ -15,6 +15,9 @@ const SearchedHomePage = () => {
 
   return (
     <div className="container my-4 mx-4">
+      <h3 align="center" class="py-4" style={{ fontWeight: "bold" }}>
+        Search Results
+      </h3>
       <div className="row">
         {items
           .filter((item) => item.itemObj.name.toLowerCase().includes(query))
@@ -25,7 +28,13 @@ const SearchedHomePage = () => {
       <div className="py-3" align="right">
         <button
           class="btn btn-md btn-primary"
-          style={{ borderRadius: "50px" }}
+          style={{
+            borderRadius: "50px",
+            backgroundColor: "gold",
+            color: "black",
+            border: 0,
+            fontWeight: "bold",
+          }}
           onClick={() => navigate("/items/add")}
         >
           + Add Item
